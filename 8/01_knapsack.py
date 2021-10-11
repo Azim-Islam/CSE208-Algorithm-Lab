@@ -4,7 +4,7 @@ cached_table = dict()
 #Generating random value-weight array
 #2-tuple array where 0th index = value 1st index = weight
 x = lambda : choice(range(10, 20)) #Values including 10 to 19
-array = [[x(),x()]  for i in range(5)]
+array = [[x(),x()]  for i in range(5)] #5 items
 
 n = len(array)
 capacity = 50 #Sack Capacity in Kilograms
