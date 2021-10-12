@@ -9,15 +9,15 @@ import sys
 sys.setrecursionlimit(10**8) #Setting the recursion limit to avoid crashes
 
 #**************************************** Input ****************************************#
-# amount, m = map(int, input().split()) #m = number of coin types
-# coins = list(map(int, input().split()))
+amount, m = map(int, input().split()) #m = number of coin types
+coins = list(map(int, input().split()))
 #**************************************** Input ****************************************#
 
 
 #**************************************** Randomly Generating Data ****************************************#
-amount = 250 #coin change to make
-m = 10 #number of coins
-coins = sample(range(1, 101), k=m)
+# amount = 250 #coin change to make
+# m = 10 #number of coins
+# coins = sample(range(1, 101), k=m)
 #**************************************** Randomly Generating Data ****************************************#
 
 
@@ -59,7 +59,7 @@ def coin_change_dynamic(change, index, note_number, note_sack):
         return 1
     if change < 0 or index >= m or coins[index] > change:
         note_number = 0
-        note_sack = []
+        #note_sack = []
         return 0
     else:
         #We Try Excluding and Including Notes To Find The mininmal Number of Notes
