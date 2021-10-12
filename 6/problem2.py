@@ -23,7 +23,7 @@ print(array)
 value = 0
 weight = 0
 for i in array:
-    if weight+i[1] < 101:
+    if weight+i[1] <= 100:
         value += i[0]
         weight += i[1]
     else:

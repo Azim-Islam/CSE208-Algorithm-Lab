@@ -3,7 +3,7 @@ def binSearch(array, element):
         Iterative implementation of Binary Search.
     """
     i = 0
-    j = len(array) 
+    j = len(array)
     
     mid = (i+j)//2 
     while i < j:

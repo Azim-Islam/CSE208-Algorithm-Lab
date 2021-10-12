@@ -1,0 +1,15 @@
+Nth term: 
+
+--------------------------------------------------
+non_dynamic took 3.146510601043701 seconds to complete
+None
+
+
+--------------------------------------------------
+dynamic1 took 1.934354305267334 seconds to complete
+None
+
+
+--------------------------------------------------
+dynamic2 took 0.019815921783447266 seconds to complete
+None
