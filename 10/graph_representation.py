@@ -1,3 +1,5 @@
+from collections import defaultdict
+import string
 
 
 class adjcn_matrix_Graph(object):
@@ -30,46 +32,45 @@ class adjcn_matrix_Graph(object):
         for row in self.adjMatrix:
             print(row)
     
+    def valid_node_color(self, node_list: list, j_node: int):
+        for i in node_list:
+            if self.adjMatrix[i][j_node] == 1:
+                return False
+        return True
+    
     def color_graph(self):
-        colors = []
         vertices_set = set()
-
         #available vertices
         for i in range(self.size):
             for j in range(self.size):
                 if self.adjMatrix[i][j] == 1:
                     vertices_set.add(i)
                     vertices_set.add(j)
-
-        colors.append(vertices_set)
-        l = 0
-        for i in colors:
-            for j in i:
-                tmp_set = set()
-                for k in i:
-                    if self.adjMatrix[j][k] == 1:
-                        tmp_set.add(k)
-                print(tmp_set)
-                #tmp_set contains all the invalid colors
-            #print(i)
-            #print(i.intersection(i - tmp_set))
-            break 
-            
-            
-            if len(tmp_set) > 1:
-                colors.append(tmp_set)
-            else:
-                print("breaking up")
+        
+        colors = defaultdict(list)
+        key = 0
+        #colors set
+        while len(vertices_set) > 0:
+            key += 1
+            blacklist = set()
+            for i in vertices_set: #this for loop runs only once
+                colors[key] = [i]
+                for j in vertices_set:
+                    if i != j:
+                        if self.adjMatrix[i][j] == 1:
+                            blacklist.add(j)
+                        else:
+                            if self.valid_node_color(colors[key], j): # checks if a new node 'j' can be added.
+                                colors[key].append(j)
+                            else:
+                                blacklist.add(j) 
                 break
-            
-            
-            print(*colors)
-        #print(*colors)
-        
-                
-            
-        
-        
+            vertices_set = blacklist.copy()
+        return colors
+    
+    def print_colored_graph(self, colors: defaultdict[list]):
+        for i in colors.keys():
+            print(f"Color {string.ascii_letters[i-1]} = {', '.join(map(str, colors[i]))}")
         
     
 def main():
@@ -81,8 +82,7 @@ def main():
         graph.add_edge(v1-1, v2-1)
         
     graph.print_matrix()
-
-    graph.color_graph()
+    graph.print_colored_graph(graph.color_graph())
 
 
 if __name__ == '__main__':
