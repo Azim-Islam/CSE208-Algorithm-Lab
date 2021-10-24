@@ -65,7 +65,7 @@ class adjcn_matrix_Graph(object):
                             else:
                                 blacklist.add(j) 
                 break
-            vertices_set = blacklist.copy()
+            vertices_set = blacklist
         return colors
     
     def print_colored_graph(self, colors: defaultdict[list]):
