@@ -31,10 +31,11 @@ class adjcn_matrix_Graph(object):
         print("\n")
         for row in self.adjMatrix:
             print(row)
-    
+        print("\n")
+
     def valid_node_color(self, node_list: list, j_node: int):
         for i in node_list:
-            if self.adjMatrix[i][j_node] == 1:
+            if self.adjMatrix[i-1][j_node] == 1:
                 return False
         return True
     
@@ -54,14 +55,14 @@ class adjcn_matrix_Graph(object):
             key += 1
             blacklist = set()
             for i in vertices_set: #this for loop runs only once
-                colors[key] = [i]
+                colors[key] = [i+1]
                 for j in vertices_set:
                     if i != j:
                         if self.adjMatrix[i][j] == 1:
                             blacklist.add(j)
                         else:
                             if self.valid_node_color(colors[key], j): # checks if a new node 'j' can be added.
-                                colors[key].append(j)
+                                colors[key].append(j+1)
                             else:
                                 blacklist.add(j) 
                 break
