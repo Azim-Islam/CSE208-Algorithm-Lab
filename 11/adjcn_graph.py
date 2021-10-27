@@ -6,7 +6,7 @@ class AdjGraph:
         self.edges = list()
         
     def add_node(self, node: str, adjcn_node: str, weight: int):
-        self.graph[node].append(adjcn_node)
+        self.graph[node].append((adjcn_node, weight))
         self.edges.append((node, adjcn_node, weight))
 
     def remove_node(self, node:str):
