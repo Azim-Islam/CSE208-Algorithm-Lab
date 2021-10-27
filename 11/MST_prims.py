@@ -38,7 +38,7 @@ if not len(mst_edges) == len(nodes) - 1:
     second_last_node = graph.graph[nodes[-2]]
     last_second = sorted(last_node + second_last_node, key=lambda x: x[1])
     
-    for node in second_last_node:
+    for node in last_second:
         if nodes[-1] in node or nodes[-2] in node:
             pass
         else:
