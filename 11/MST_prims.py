@@ -31,7 +31,6 @@ for node in nodes:
     if node not in mst:
         mst_add_node(graph.graph, node, mst, mst_edges)
     
-print(nodes)
         
 if not len(mst_edges) == len(nodes) - 1:
     last_node = graph.graph[nodes[-1]]
