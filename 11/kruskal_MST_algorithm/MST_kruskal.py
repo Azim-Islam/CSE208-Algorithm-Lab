@@ -11,7 +11,7 @@ graph = AdjGraph()
 for _ in range(int(input("Input the number of EDGES:"))):
     node, adj_node, weight = input().split()
     graph.add_node(node, adj_node, int(weight))
-    graph.add_node(adj_node, node, int(weight)) #uncommenting this line for undirected graph
+    graph.add_node(adj_node, node, int(weight)) # This is an undirected graph.
 
 
 graph.sort_edges()

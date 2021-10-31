@@ -6,7 +6,7 @@ graph = AdjGraph()
 for _ in range(int(input("Input the number of EDGES:"))):
     node, adj_node, weight = input().split()
     graph.add_node(node, int(weight), adj_node)
-    graph.add_node(adj_node, int(weight), node)
+    graph.add_node(adj_node, int(weight), node) # This is an undirected graph.
     
     
 mst = list()
@@ -20,7 +20,8 @@ def prims(graph: dict, starting_node):
     while edges:
         count += 1
         print(f"while loop run {count}")
-        edge = heapq.heappop(edges) #edge[0] = cost, edge[1] = node_1, edge[2] = node_2
+        # popping the lowest weighted edge
+        edge = heapq.heappop(edges) #edge[0] = cost, edge[1] = source_node, edge[2] = adj_node
         if edge[2] not in visited:
             mst.append((edge[1], edge[2], edge[0]))
             visited.add(edge[2])
