@@ -3,7 +3,7 @@ import adjcn_graph
 
 graph = adjcn_graph.AdjGraph()
 
-for _ in range(int(input("Input the number of EDGES:"))):
+for _ in range(int(input(""))):
     node, adj_node, weight = input().split()
     graph.add_node(node, int(weight), adj_node)
     graph.add_node(adj_node, int(weight), node) # This is an undirected graph.
@@ -22,7 +22,7 @@ def dijkstra(graph: graph.graph, source_node: str):
     count = 0
     while edges: # While the edges are not empty
         count += 1
-        print(f"While loop run time {count}")
+        #print(f"While loop run time {count}")
         edge = heapq.heappop(edges) # edge[0] = weight, edge[1] = source_node, edge[2] = adj_node
         weight = edge[0]
         src_node = edge[1]
@@ -30,8 +30,10 @@ def dijkstra(graph: graph.graph, source_node: str):
         
         if stnc[src_node] + weight < stnc[adj_node] and adj_node not in visited_nodes: 
             stnc[adj_node] = stnc[src_node] + weight # picking up the smallest value (node to source)for a node
-            [heapq.heappush(edges, (weight, adj_node, next_node)) for weight, next_node in graph[adj_node] if next_node not in visited_nodes] # Adding edges into the heap
+            # Adding the edges of adjacent nodes to the priority queue
+            [heapq.heappush(edges, (weight, adj_node, next_node)) for weight, next_node in graph[adj_node] if next_node not in visited_nodes]
         visited_nodes.add(src_node)
+    print("All node cost from source A")
     print(stnc)
     
 dijkstra(graph.graph, "A")

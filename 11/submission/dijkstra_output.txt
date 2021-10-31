@@ -1,0 +1,2 @@
+All node cost from source A
+{'A': 0, 'B': 1, 'C': 6, 'E': 4, 'D': 6}
